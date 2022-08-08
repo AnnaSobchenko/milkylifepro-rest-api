@@ -1,5 +1,5 @@
-#IT-Revolution 22 team bc-13
+#milkylifepro-rest-api
 
-backend part  https://tree-care-rest-api.herokuapp.com/for Hacaton IT Revolution22
+backend part  https://milkylifepro-rest-api.herokuapp.com/
 
-https://tree-care-rest-api.herokuapp.com/api-docs/
+https://milkylifepro-rest-api.herokuapp.com/api-docs/
