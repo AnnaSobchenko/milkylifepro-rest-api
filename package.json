@@ -1,5 +1,5 @@
 {
-  "name": "it-revolution22-rest-api",
+  "name": "milkylifepro-rest-api",
   "version": "0.0.0",
   "private": true,
   "description": "",
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AnnaSobchenko/it-revolution22.git"
+    "url": "git+https://github.com/AnnaSobchenko/milkylifepro-rest-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AnnaSobchenko/it-revolution22/issues"
+    "url": "https://github.com/AnnaSobchenko/milkylifepro-rest-api/issues"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
