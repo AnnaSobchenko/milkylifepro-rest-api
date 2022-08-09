@@ -9,8 +9,7 @@ module.exports = {
           minDomainSegments: 2,
           tlds: { allow: ["com", "net", "ua"] },
         })
-        .optional(),
-      phone: Joi.string()     
+        .optional()     
     });
 
     const validationResult = schemaValid.validate(req.body);
@@ -41,7 +40,8 @@ module.exports = {
           minDomainSegments: 2,
           tlds: { allow: ["com", "net"] },
         })
-        .optional(),
+        .optional(),        
+      phone: Joi.string().required(),
       password: Joi.string().required(),     
     });
 

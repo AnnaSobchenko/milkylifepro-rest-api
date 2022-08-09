@@ -10,8 +10,9 @@ const uuid = require("uuid");
 require("dotenv").config();
 
 const signupUser = async (body) => {
+  console.log('body :>> ', body);
   const verificationToken = uuid.v4();
-  const { email, password, name, phoneNumber } = body;
+  const { email, password, name, phone } = body;
 
   const isSingup = await Users.create({
     name,
@@ -20,7 +21,7 @@ const signupUser = async (body) => {
       password,
       Number(process.env.BCRYPT_SALT_ROUNDS)
     ),
-    phoneNumber,
+    phone,
     verificationToken,
   });
 
@@ -29,8 +30,8 @@ const signupUser = async (body) => {
     to: email, // Change to your recipient
     from: "annsbchnk@gmail.com", // Change to your verified sender
     subject: "Sending  verification email",
-    text: `https://tree-care-rest-api.herokuapp.com/api/users/verify/${verificationToken}`,
-    html: `<p>Hello, verificy your email, please click <a href="https://tree-care-rest-api.herokuapp.com/api/users/verify/${verificationToken}">Confirm email</a></p>`,
+    text: `https://milkylifepro-rest-api.herokuapp.com/api/users/verify/${verificationToken}`,
+    html: `<p>Hello, verificy your email, please click <a href="https://milkylifepro-rest-api.herokuapp.com/api/users/verify/${verificationToken}">Confirm email</a></p>`,
   };
   sgMail
     .send(msg)
