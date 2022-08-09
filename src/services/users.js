@@ -9,8 +9,7 @@ const uuid = require("uuid");
 
 require("dotenv").config();
 
-const signupUser = async (body) => {
-  console.log('body :>> ', body);
+const signupUser = async (body) => {  
   const verificationToken = uuid.v4();
   const { email, password, name, phone } = body;
 
@@ -148,14 +147,14 @@ const refreshMToken = async (token) => {
 const getAllUsers = async () => {
   const result = await Users.find(
     {},
-    { email: 1, _id: 1, name: 1, phoneNumber: 1 }
+    { email: 1, _id: 1, name: 1, phone: 1 }
   );
   return result;
 };
 const getInfo = async ({ email }) => {
   const result = await Users.find(
     { email },
-    { email: 1, _id: 1, phoneNumber: 1, name: 1 }
+    { email: 1, _id: 1, phone: 1, name: 1 }
   );
   return result;
 };
