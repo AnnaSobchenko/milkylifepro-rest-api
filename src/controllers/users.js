@@ -12,7 +12,7 @@ const {
 } = require("../services/users");
 
 const signinUserController = async (req, res, next) => {
-  const { token, email, name, phoneNumber, refreshToken } = await loginUser(
+  const { token, email, name, phone, refreshToken } = await loginUser(
     req.body
   );
   res.status(201).json({
@@ -21,7 +21,7 @@ const signinUserController = async (req, res, next) => {
       user: {
         name,
         email,
-        phoneNumber,
+        phone,
       },
       token,
       refreshToken,
