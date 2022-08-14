@@ -16,7 +16,7 @@ const usersSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: [true, "Phone number is required"],   
+    required: [true, "Phone number is required"],
   },
   token: {
     type: String,
@@ -33,11 +33,15 @@ const usersSchema = new mongoose.Schema({
   verificationToken: {
     type: String,
     required: [true, "Verify token is required"],
-  },  
-  date:{
-    type:String,
-    default: new Date()
-  }
+  },
+  date: {
+    type: String,
+    default: new Date(),
+  },
+  avatarURL: {
+    type: String,
+    default: "",
+  },
 });
 
 const Users = mongoose.model("users", usersSchema);

@@ -22,7 +22,23 @@ const {
   getUsers,
   deleteUser,
   getUserInfo,
+  avatarUser,
 } = require("../../controllers/users");
+
+const multer = require("multer");
+const mime = require("mime-types");
+const uuid = require("uuid");
+
+const upload = multer({
+  storage: multer.diskStorage({
+    filename: (req, file, cb) => {
+      const extname = mime.extension(file.mimetype);
+      const filename = uuid.v4() + "." + extname;
+      cb(null, filename);
+    },
+    destination: "./tmp",
+  }),
+});
 
 router.post(
   "/signup",
@@ -51,5 +67,12 @@ router.get("/", catchErrors(getUsers));
 router.get("/info", catchErrors(getUserInfo));
 
 router.delete("/:userId", catchErrors(deleteUser));
+
+router.patch(
+  "/avatars",
+  authorize,
+  upload.single("avatar"),
+  catchErrors(avatarUser)
+);
 
 module.exports = router;

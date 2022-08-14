@@ -9,7 +9,7 @@ const uuid = require("uuid");
 
 require("dotenv").config();
 
-const signupUser = async (body) => {  
+const signupUser = async (body) => {
   const verificationToken = uuid.v4();
   const { email, password, name, phone } = body;
 
@@ -21,6 +21,7 @@ const signupUser = async (body) => {
       Number(process.env.BCRYPT_SALT_ROUNDS)
     ),
     phone,
+    avatarURL: gravatar.url(email, { s: "100", r: "x", d: "monsterid" }, false),
     verificationToken,
   });
 
@@ -61,7 +62,7 @@ const loginUser = async (body) => {
       { token, refreshToken },
       { new: true }
     );
-   
+
     return user;
   }
 };
@@ -148,20 +149,35 @@ const refreshMToken = async (token) => {
 const getAllUsers = async () => {
   const result = await Users.find(
     {},
-    { email: 1, _id: 1, name: 1, phone: 1 }
+    { email: 1, _id: 1, name: 1, phone: 1, avatarURL: 1 }
   );
   return result;
 };
 const getInfo = async ({ email }) => {
   const result = await Users.find(
     { email },
-    { email: 1, _id: 1, phone: 1, name: 1 }
+    { email: 1, _id: 1, phone: 1, name: 1, avatarURL: 1 }
   );
   return result;
 };
 const deleteOneUser = async (_id) => {
   const result = await Users.findOneAndDelete({ _id });
   return result;
+};
+
+const avatarsUpdate = async (token, body) => {
+  const { path, filename } = body;
+  const newFile = await Jimp.read(path);
+  const newPath = "./public/avatars/" + filename;
+  await newFile.resize(250, 250).writeAsync(newPath);
+  await fs.unlink(path);
+
+  const user = await Users.findOneAndUpdate(
+    { token },
+    { avatarURL: newPath },
+    { new: true }
+  );
+  return user;
 };
 
 module.exports = {
@@ -175,4 +191,5 @@ module.exports = {
   getAllUsers,
   deleteOneUser,
   getInfo,
+  avatarsUpdate
 };

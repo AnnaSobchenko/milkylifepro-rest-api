@@ -248,6 +248,11 @@
             "description": "User's name",
             "example": "user1"
           },
+          "phone": {
+            "type": "string",
+            "description": "User's phone number",
+            "example": "+3801111111"
+          },
           "email": {
             "type": "string",
             "description": "User's email",
@@ -274,6 +279,11 @@
             "description": "User's email",
             "format": "email",
             "example": "user123@mail.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "User's phone number",
+            "example": "+3801111111"
           },
           "verificationToken": {
             "type": "string",
@@ -305,7 +315,7 @@
           "user": {
             "type": "object",
             "properties": {
-              "nikName": {
+              "name": {
                 "type": "string",
                 "description": "User's name",
                 "example": "user1"
@@ -315,6 +325,11 @@
                 "description": "User's email",
                 "format": "email",
                 "example": "user123@mail.com"
+              },
+              "phone": {
+                "type": "string",
+                "description": "User's phone number",
+                "example": "+3801111111"
               }
             }
           },
