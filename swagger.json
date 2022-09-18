@@ -444,35 +444,35 @@
             }
           }
         }
-      }
-    },
-    "PricesResponse": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "description": "title",
-          "example": "Разова консультація"
-        },
-        "price": {
-          "type": "string",
-          "description": "price",
-          "example": "590"
-        },
-        "online": {
-          "type": "string",
-          "description": "online",
-          "example": "Онлайн відео консультація"
-        },
-        "period": {
-          "type": "string",
-          "description": "period",
-          "example": "1 година"
-        },
-        "description": {
-          "type": "string",
-          "description": "description",
-          "example": "Покрокова інструкція подальших кроків по результату консультації"
+      },
+      "PricesResponse": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "title",
+            "example": "Разова консультація"
+          },
+          "price": {
+            "type": "string",
+            "description": "price",
+            "example": "590"
+          },
+          "online": {
+            "type": "string",
+            "description": "online",
+            "example": "Онлайн відео консультація"
+          },
+          "period": {
+            "type": "string",
+            "description": "period",
+            "example": "1 година"
+          },
+          "description": {
+            "type": "string",
+            "description": "description",
+            "example": "Покрокова інструкція подальших кроків по результату консультації"
+          }
         }
       }
     }
