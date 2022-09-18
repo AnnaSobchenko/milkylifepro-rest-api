@@ -12,9 +12,8 @@ const {
 } = require("../services/users");
 
 const signinUserController = async (req, res, next) => {
-  const { token, email, name, phone,avatarURL, refreshToken } = await loginUser(
-    req.body
-  );
+  const { token, email, name, phone, avatarURL, refreshToken } =
+    await loginUser(req.body);
   res.status(201).json({
     contentType: "application/json",
     ResponseBody: {
@@ -22,7 +21,7 @@ const signinUserController = async (req, res, next) => {
         name,
         email,
         phone,
-        avatarURL
+        avatarURL,
       },
       token,
       refreshToken,
@@ -80,10 +79,10 @@ const deleteUser = async (req, res, next) => {
   await deleteOneUser(req.params.userId);
   res.sendStatus(204);
 };
-const avatarUser=async (req, res, next) => {
+const avatarUser = async (req, res, next) => {
   const user = await avatarsUpdate(req.user.token, req.file);
   res.status(200).send(user);
-}
+};
 
 module.exports = {
   signupUserController,
@@ -96,5 +95,5 @@ module.exports = {
   getUsers,
   deleteUser,
   getUserInfo,
-  avatarUser
+  avatarUser,
 };

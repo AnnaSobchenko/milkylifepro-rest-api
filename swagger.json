@@ -11,6 +11,10 @@
     {
       "name": "User",
       "description": "User's endpoints"
+    },
+    {
+      "name": "Prices",
+      "description": "User's endpoints"
     }
   ],
   "paths": {
@@ -210,13 +214,14 @@
           }
         }
       }
-    },   
+    },
     "/api/users/{userId}": {
       "delete": {
         "tags": ["User"],
         "summary": "Delete user by id",
-        "parameters": [ 
-          {"in": "path",
+        "parameters": [
+          {
+            "in": "path",
             "name": "userId",
             "schema": {
               "type": "string"
@@ -224,18 +229,45 @@
             "required": true,
             "description": "user's id"
           }
-        ],         
+        ],
         "responses": {
           "204": {
-            "description": "Successful operation"            
-          },          
+            "description": "Successful operation"
+          },
           "404": {
             "description": "Invalid user / Invalid session",
             "content": {}
           }
         }
       }
-    }    
+    },
+    "/api/prices/": {
+      "get": {
+        "tags": ["Prices"],
+        "summary": "get prices",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PricesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No token provided",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
@@ -412,15 +444,44 @@
             }
           }
         }
-      }        
-    }   
-  },
-    "securitySchemes": {
-      "Bearer": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
+      }
+    },
+    "PricesResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "title",
+          "example": "Разова консультація"
+        },
+        "price": {
+          "type": "string",
+          "description": "price",
+          "example": "590"
+        },
+        "online": {
+          "type": "string",
+          "description": "online",
+          "example": "Онлайн відео консультація"
+        },
+        "period": {
+          "type": "string",
+          "description": "period",
+          "example": "1 година"
+        },
+        "description": {
+          "type": "string",
+          "description": "description",
+          "example": "Покрокова інструкція подальших кроків по результату консультації"
+        }
       }
     }
+  },
+  "securitySchemes": {
+    "Bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
   }
-
+}
