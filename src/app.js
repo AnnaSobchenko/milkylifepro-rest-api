@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const usersRouter = require("./routes/api/users");
 const pricesRouter = require("./routes/api/prices");
+const reviewsRouter = require("./routes/api/reviews");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../swagger.json");
@@ -22,6 +23,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api/users", usersRouter);
 app.use("/api/prices", pricesRouter);
+app.use("/api/reviews", reviewsRouter);
 app.use("/avatars", express.static("public/avatars"));
 
 app.use((req, res) => {

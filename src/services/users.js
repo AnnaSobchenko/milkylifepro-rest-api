@@ -191,5 +191,5 @@ module.exports = {
   getAllUsers,
   deleteOneUser,
   getInfo,
-  avatarsUpdate
+  avatarsUpdate,
 };

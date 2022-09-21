@@ -1,9 +1,10 @@
 const express = require("express");
-const { getPricesController } = require("../../controllers/prices");
+const { getReviewsController } = require("../../controllers/reviews");
+
 const { catchErrors } = require("../../middlewares/catch-errors");
 
 const router = express.Router();
 
-router.get("/", catchErrors(getPricesController));
+router.get("/", catchErrors(getReviewsController));
 
 module.exports = router;

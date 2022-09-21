@@ -35,7 +35,9 @@ module.exports.catchVerifyErrors = (middleware) => {
     try {
       await middleware(req, res);
     } catch (err) {
-      return res.status(400).json({  message: "Verification has already been passed" });
+      return res
+        .status(400)
+        .json({ message: "Verification has already been passed" });
     }
   };
 };

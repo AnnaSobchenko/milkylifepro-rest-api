@@ -14,7 +14,11 @@
     },
     {
       "name": "Prices",
-      "description": "User's endpoints"
+      "description": "Services and prices"
+    },
+    {
+      "name": "Reviews",
+      "description": "Reviews clients"
     }
   ],
   "paths": {
@@ -267,6 +271,33 @@
           }
         }
       }
+    },
+    "/api/reviews/": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "get reviews",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No token provided",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
     }
   },
   "components": {
@@ -472,6 +503,31 @@
             "type": "string",
             "description": "description",
             "example": "Покрокова інструкція подальших кроків по результату консультації"
+          }
+        }
+      },
+      "ReviewsResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "user name on site",
+            "example": "Hanna"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "user's avatar",
+            "example": "http://www.gravatar.com/avatar/017a475b41e86a455f4adbf7bb026f03?s=100&r=x&d=monsterid"
+          },
+          "date": {
+            "type": "string",
+            "description": "date of review",
+            "example": "21.09.2022"
+          },
+          "review": {
+            "type": "string",
+            "description": "user's review",
+            "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістюl."
           }
         }
       }
