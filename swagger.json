@@ -260,13 +260,9 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "No token provided",
-            "content": {}
-          },
+          },          
           "404": {
-            "description": "Invalid user / Invalid session",
+            "description": "Bad request",
             "content": {}
           }
         }
@@ -287,13 +283,9 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "No token provided",
-            "content": {}
-          },
+          },          
           "404": {
-            "description": "Invalid user / Invalid session",
+            "description": "Bad request",
             "content": {}
           }
         }
@@ -528,6 +520,12 @@
             "type": "string",
             "description": "user's review",
             "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістюl."
+          },
+          "isApprove":{
+            "type": "boolean",
+            "description": "admin's approved review",
+            "example": false
+          
           }
         }
       }
