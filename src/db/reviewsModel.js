@@ -15,10 +15,10 @@ const reviewsSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  isApprove:{
-    type:Boolean,
-    default:false
-  }
+  isApprove: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Reviews = mongoose.model("reviews", reviewsSchema);

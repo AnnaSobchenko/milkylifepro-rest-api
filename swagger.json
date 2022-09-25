@@ -260,7 +260,7 @@
                 }
               }
             }
-          },          
+          },
           "404": {
             "description": "Bad request",
             "content": {}
@@ -283,7 +283,41 @@
                 }
               }
             }
-          },          
+          },
+          "404": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/reviews/isapprove": {
+      "post": {
+        "tags": ["Reviews"],
+        "summary": "set isApprove:true for review",
+        "parameters": [],
+        "requestBody": {
+          "description": "Reviews's id",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApproveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApproveResponse"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Bad request",
             "content": {}
@@ -521,21 +555,60 @@
             "description": "user's review",
             "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістюl."
           },
-          "isApprove":{
+          "isApprove": {
             "type": "boolean",
             "description": "admin's approved review",
             "example": false
-          
+          }
+        }
+      },
+      "ApproveRequest": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "review's id",
+            "example": "632b12de050b2630dbf783bb"
+          }
+        }
+      },
+      "ApproveResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "user name on site",
+            "example": "Hanna"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "user's avatar",
+            "example": "http://www.gravatar.com/avatar/017a475b41e86a455f4adbf7bb026f03?s=100&r=x&d=monsterid"
+          },
+          "date": {
+            "type": "string",
+            "description": "date of review",
+            "example": "Wed Sep 21 2022 12:04:31 GMT+0000 (Coordinated Universal Time)"
+          },
+          "review": {
+            "type": "string",
+            "description": "user's review",
+            "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістюl."
+          },
+          "isApprove": {
+            "type": "boolean",
+            "description": "admin's approved review",
+            "example": true
           }
         }
       }
-    }
-  },
-  "securitySchemes": {
-    "Bearer": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   }
 }
