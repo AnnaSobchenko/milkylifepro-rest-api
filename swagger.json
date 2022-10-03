@@ -272,7 +272,41 @@
       "get": {
         "tags": ["Reviews"],
         "summary": "get reviews",
+        "parameters": [],       
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/reviews/newreview": {
+      "post": {
+        "tags": ["Reviews"],
+        "summary": "add review",
         "parameters": [],
+        "requestBody": {
+          "description": "New review",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddReviewRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -320,6 +354,32 @@
           },
           "404": {
             "description": "Bad request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/reviews/{reviewId}": {
+      "delete": {
+        "tags": ["Reviews"],
+        "summary": "Delete review by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "reviewId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "review's id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
             "content": {}
           }
         }
@@ -562,6 +622,27 @@
           }
         }
       },
+      "AddReviewRequest": {
+        "required": ["user", "avatarURL", "review"],
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Hanna"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "Avatar URL",
+            "example": "http://www.gravatar.com/avatar/017a475b41e86a455f4adbf7bb026f03?s=100&r=x&d=monsterid"
+          },
+          "review": {
+            "type": "string",
+            "description": "User's review",            
+            "example": "Біль…він додає певного забарвлення життю, він пронизує, він віддає наче в самісенький мозок і змінює нашу зовнішність. Перше фото є тому гарним підтвердженням. Хочу зберегти ці спогади і від усього сердечка подякувати тобі, Олесечка @olesia.foremna за твій професіоналізм, ніжність і любов до своєї справи. Завдяки тобі я навчилась годувати, отримуючи радість 🥰"
+          }
+        }
+      },
       "ApproveRequest": {
         "type": "object",
         "properties": {
@@ -593,7 +674,7 @@
           "review": {
             "type": "string",
             "description": "user's review",
-            "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістюl."
+            "example": "Доброго вечора! Олесю, дякую за консультацію! Давно хотіла з Вами поділитись, 6 місяців повного гв без допаювання водичкою, сумішів та прикорму і це з повною занятістю."
           },
           "isApprove": {
             "type": "boolean",

@@ -11,8 +11,8 @@ const { catchErrors } = require("../../middlewares/catch-errors");
 const router = express.Router();
 
 router.get("/", catchErrors(getReviewsController));
-router.post("/", catchErrors(addReviewsController));
+router.post("/newreview", catchErrors(addReviewsController));
 router.post("/isapprove", catchErrors(isApproveReviewsController));
-router.delete("/", catchErrors(removeReviewsController));
+router.delete("/:reviewId", catchErrors(removeReviewsController));
 
 module.exports = router;
