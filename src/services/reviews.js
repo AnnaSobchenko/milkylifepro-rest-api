@@ -8,9 +8,10 @@ const getAllReviews = async () => {
   return result;
 };
 
-const isApproveReviews = async (_id) => {
+const isApproveReviews = async ({reviewId}) => {
+  console.log('_id isApproveReviews' , reviewId)
   const result = await Reviews.findOneAndUpdate(
-    { _id },
+    { _id:reviewId },
     { isApprove: true },
     { new: true }
   );
