@@ -325,22 +325,21 @@
         }
       }
     },
-    "/api/reviews/isapprove": {
+    "/api/reviews/isapprove/:reviewId": {
       "post": {
         "tags": ["Reviews"],
-        "summary": "set isApprove:true for review",
-        "parameters": [],
-        "requestBody": {
-          "description": "Reviews's id",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ApproveRequest"
-              }
-            }
+        "summary": "set approve from admin for review",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "reviewId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "review's id"
           }
-        },
+        ],       
         "responses": {
           "200": {
             "description": "Successful operation",

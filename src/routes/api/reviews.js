@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/", catchErrors(getReviewsController));
 router.post("/newreview", catchErrors(addReviewsController));
-router.post("/isapprove", catchErrors(isApproveReviewsController));
+router.post("/isapprove/:reviewId", catchErrors(isApproveReviewsController));
 router.delete("/:reviewId", catchErrors(removeReviewsController));
 
 module.exports = router;
