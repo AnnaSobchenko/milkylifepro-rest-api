@@ -85,7 +85,6 @@ const currentUser = async (token) => {
 };
 
 const verificationUser = async (verificationToken) => {
-  console.log("verificationToken", verificationToken);
   const user = await Users.findOneAndUpdate(
     { verificationToken },
     {
@@ -95,7 +94,6 @@ const verificationUser = async (verificationToken) => {
 
     { new: true }
   );
-  // console.log("user", user);
   return user;
 };
 

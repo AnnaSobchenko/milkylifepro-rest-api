@@ -15,8 +15,6 @@ module.exports = {
     });
 
     const validationResult = schemaValid.validate(req.body);
-    console.log("req.body", req.body);
-    console.log("validationResult.error", validationResult);
     if (validationResult.error !== undefined) {
       return res.status(400).json({
         contentType: "application/json",

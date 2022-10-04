@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const reviewsSchema = new mongoose.Schema({
-  user: {
+  name: {
     type: String,
   },
   avatarURL: {

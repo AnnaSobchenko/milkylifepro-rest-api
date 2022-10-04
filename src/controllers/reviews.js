@@ -19,7 +19,7 @@ const addReviewsController = async (req, res, next) => {
 };
 
 const removeReviewsController = async (req, res, next) => {
-  await removeReview(req.body);
+  await removeReview(req.params);
   res.sendStatus(204);
 };
 

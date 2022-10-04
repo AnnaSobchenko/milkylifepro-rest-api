@@ -272,7 +272,7 @@
       "get": {
         "tags": ["Reviews"],
         "summary": "get reviews",
-        "parameters": [],       
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -339,7 +339,7 @@
             "required": true,
             "description": "review's id"
           }
-        ],       
+        ],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -358,14 +358,14 @@
         }
       }
     },
-    "/api/reviews/{reviewId}": {
+    "/api/reviews/{reviewDelId}": {
       "delete": {
         "tags": ["Reviews"],
         "summary": "Delete review by id",
         "parameters": [
           {
             "in": "path",
-            "name": "reviewId",
+            "name": "reviewDelId",
             "schema": {
               "type": "string"
             },
@@ -594,7 +594,7 @@
       "ReviewsResponse": {
         "type": "object",
         "properties": {
-          "user": {
+          "name": {
             "type": "string",
             "description": "user name on site",
             "example": "Hanna"
@@ -625,7 +625,7 @@
         "required": ["user", "avatarURL", "review"],
         "type": "object",
         "properties": {
-          "user": {
+          "name": {
             "type": "string",
             "description": "User's name",
             "example": "Hanna"
@@ -637,25 +637,15 @@
           },
           "review": {
             "type": "string",
-            "description": "User's review",            
+            "description": "User's review",
             "example": "Біль…він додає певного забарвлення життю, він пронизує, він віддає наче в самісенький мозок і змінює нашу зовнішність. Перше фото є тому гарним підтвердженням. Хочу зберегти ці спогади і від усього сердечка подякувати тобі, Олесечка @olesia.foremna за твій професіоналізм, ніжність і любов до своєї справи. Завдяки тобі я навчилась годувати, отримуючи радість 🥰"
-          }
-        }
-      },
-      "ApproveRequest": {
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "description": "review's id",
-            "example": "632b12de050b2630dbf783bb"
           }
         }
       },
       "ApproveResponse": {
         "type": "object",
         "properties": {
-          "user": {
+          "name": {
             "type": "string",
             "description": "user name on site",
             "example": "Hanna"
