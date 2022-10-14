@@ -63,6 +63,7 @@ const getVerifyController = async (req, res, next) => {
 };
 
 const refreshTokenController = async (req, res, next) => {
+  // console.log('req.persistedToken', req.user.token)
   const user = await refreshMToken(req.user.token);
   res.status(200).send(user);
 };
